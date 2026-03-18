@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anatomie Comparée — Animaux Domestiques & de Production</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:wght@300;400;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f5f0e8;
+    --cream: #faf7f2;
+    --ink: #1a1410;
+    --sepia: #5c3d1e;
+    --rust: #8b3a1a;
+    --gold: #c9972a;
+    --sage: #4a5e3a;
+    --bone: #d4c8a8;
+    --shadow: rgba(26,20,16,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 300;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ── GRAIN OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999; opacity: 0.4;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center;
+  }
+
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 50%, #2a1f0f 0%, #1a1410 100%);
+  }
+
+  .header-ornament {
+    position: absolute;
+    width: 100%; height: 100%;
+    top: 0; left: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(201,151,42,0.04) 60px, rgba(201,151,42,0.04) 61px),
+      repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(201,151,42,0.04) 60px, rgba(201,151,42,0.04) 61px);
+  }
+
+  .header-content {
+    position: relative; z-index: 2;
+    padding: 4rem 2rem;
+    animation: fadeInUp 1.2s ease both;
+  }
+
+  .header-eyebrow {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--parchment);
+    margin-bottom: 1rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .header-subtitle {
+    font-size: 1.1rem;
+    color: rgba(245,240,232,0.6);
+    max-width: 560px;
+    margin: 1.5rem auto 3rem;
+    font-weight: 300;
+  }
+
+  .header-divider {
+    width: 80px; height: 1px;
+    background: var(--gold);
+    margin: 0 auto 3rem;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--ink);
+    position: sticky; top: 0; z-index: 100;
+    border-bottom: 1px solid var(--gold);
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex; justify-content: center; flex-wrap: wrap;
+    gap: 0; padding: 0;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 1rem 1.4rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.65);
+    text-decoration: none;
+    transition: color 0.25s, background 0.25s;
+    border-right: 1px solid rgba(201,151,42,0.15);
+  }
+
+  nav ul li a:hover { color: var(--gold); background: rgba(201,151,42,0.06); }
+
+  /* ── SECTIONS ── */
+  section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .section-intro {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--rust);
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--sepia);
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--sepia);
+    margin-bottom: 0.8rem;
+  }
+
+  h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--rust);
+    margin-bottom: 0.5rem;
+  }
+
+  p { margin-bottom: 1rem; color: #2d2218; }
+
+  .lead {
+    font-size: 1.1rem;
+    color: #4a3828;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.9;
+  }
+
+  /* ── SEPARATORS ── */
+  .sep {
+    width: 100%; height: 1px;
+    background: linear-gradient(to right, transparent, var(--bone), transparent);
+    margin: 0;
+  }
+
+  .ornament {
+    text-align: center;
+    color: var(--gold);
+    font-size: 1.4rem;
+    letter-spacing: 0.5rem;
+    margin: 2rem 0;
+  }
+
+  /* ── BAND SECTIONS ── */
+  .band {
+    background: var(--cream);
+    border-top: 1px solid var(--bone);
+    border-bottom: 1px solid var(--bone);
+  }
+
+  .band-dark {
+    background: #221810;
+    border: none;
+  }
+
+  .band-dark section { color: var(--parchment); }
+  .band-dark h2 { color: var(--gold); }
+  .band-dark h3 { color: var(--bone); }
+  .band-dark h4 { color: #d4a06a; }
+  .band-dark p { color: rgba(245,240,232,0.75); }
+  .band-dark .section-tag { color: #d4a06a; }
+  .band-dark .lead { color: rgba(245,240,232,0.8); }
+
+  /* ── ANIMAL CARDS ── */
+  .animal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+  }
+
+  .animal-card {
+    background: var(--cream);
+    border: 1px solid var(--bone);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .animal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(26,20,16,0.12);
+  }
+
+  .animal-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rust), var(--gold));
+  }
+
+  .card-img {
+    width: 100%; height: 220px;
+    object-fit: cover;
+    display: block;
+    filter: sepia(20%) contrast(1.05);
+    transition: filter 0.3s;
+  }
+
+  .animal-card:hover .card-img { filter: sepia(0%) contrast(1.1); }
+
+  .card-body { padding: 1.8rem; }
+
+  .card-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+
+  /* ── COMPARISON TABLE ── */
+  .table-wrap { overflow-x: auto; margin-top: 2.5rem; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  thead tr {
+    background: var(--sepia);
+    color: var(--parchment);
+  }
+
+  thead th {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  tbody tr { border-bottom: 1px solid var(--bone); }
+  tbody tr:nth-child(even) { background: rgba(212,200,168,0.2); }
+  tbody tr:hover { background: rgba(201,151,42,0.08); }
+  td { padding: 0.9rem 1.2rem; }
+  td:first-child { font-weight: 600; color: var(--sepia); }
+
+  /* ── SKELETON GALLERY ── */
+  .skeleton-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .skeleton-item {
+    text-align: center;
+    background: #f0ebe0;
+    border: 1px solid var(--bone);
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .skeleton-item img {
+    width: 100%; height: 260px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(30%) sepia(15%);
+    transition: filter 0.4s, transform 0.4s;
+  }
+
+  .skeleton-item:hover img {
+    filter: grayscale(0%) sepia(5%);
+    transform: scale(1.03);
+  }
+
+  .skeleton-caption {
+    padding: 1.2rem 1rem;
+    border-top: 1px solid var(--bone);
+  }
+
+  .skeleton-caption h4 {
+    font-family: 'Playfair Display', serif;
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--sepia);
+    margin-bottom: 0.3rem;
+  }
+
+  .skeleton-caption p {
+    font-size: 0.82rem;
+    color: #5c4a36;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* ── SYSTEM CARDS ── */
+  .system-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  .system-card {
+    border-left: 3px solid var(--gold);
+    background: rgba(245,240,232,0.6);
+    padding: 1.8rem 2rem;
+  }
+
+  .system-icon {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  /* ── IMAGE-TEXT LAYOUT ── */
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin: 3rem 0;
+  }
+
+  .split.reverse { direction: rtl; }
+  .split.reverse > * { direction: ltr; }
+
+  .split img {
+    width: 100%; height: 320px;
+    object-fit: cover;
+    filter: sepia(10%) contrast(1.05);
+    border: 1px solid var(--bone);
+  }
+
+  @media (max-width: 768px) {
+    .split, .split.reverse { grid-template-columns: 1fr; direction: ltr; }
+    nav ul li a { padding: 0.7rem 0.9rem; font-size: 0.65rem; }
+  }
+
+  /* ── CALLOUT BOX ── */
+  .callout {
+    background: linear-gradient(135deg, #fff9ee, #f5ead5);
+    border: 1px solid var(--gold);
+    border-left: 4px solid var(--gold);
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    position: relative;
+  }
+
+  .callout::before {
+    content: '⚕';
+    position: absolute;
+    top: -0.9rem; left: 1.5rem;
+    background: var(--gold);
+    color: white;
+    width: 1.8rem; height: 1.8rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    border-radius: 50%;
+  }
+
+  .callout p { margin: 0; font-size: 0.95rem; color: #3a2a1a; }
+
+  /* ── FOOTNOTE BANNER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(245,240,232,0.5);
+    text-align: center;
+    padding: 2.5rem 2rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    border-top: 1px solid var(--gold);
+  }
+
+  footer span { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── SCROLL INDICATOR ── */
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0.5rem;
+    color: rgba(245,240,232,0.4);
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    animation: bounce 2s infinite;
+    z-index: 2;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    display: block;
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── LE SAVAIS-TU CARDS ── */
+  .fun-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.8rem;
+    margin-top: 3rem;
+  }
+
+  .fun-card {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: transform 0.3s ease;
+  }
+
+  .fun-card:hover { transform: translateY(-5px); }
+
+  .fun-card::before {
+    content: '?';
+    position: absolute;
+    right: -0.5rem; top: -1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(201,151,42,0.08);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .fun-card .fun-emoji {
+    font-size: 2.2rem;
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+
+  .fun-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+  }
+
+  .fun-card p {
+    color: rgba(245,240,232,0.72);
+    font-size: 0.88rem;
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  .fun-card .fun-species {
+    display: inline-block;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.5rem;
+    background: rgba(139,58,26,0.2);
+    padding: 0.15rem 0.5rem;
+    border: 1px solid rgba(139,58,26,0.4);
+  }
+
+  /* Number badges */
+  .num-badge {
+    display: inline-block;
+    background: var(--rust);
+    color: var(--parchment);
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    width: 1.6rem; height: 1.6rem;
+    line-height: 1.6rem;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+  }
+
+  /* Highlight keyword */
+  mark {
+    background: rgba(201,151,42,0.25);
+    color: inherit;
+    padding: 0 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════ HEADER ═══════════════════════════════════ -->
+<header>
+  <div class="header-ornament"></div>
+  <div class="header-content">
+    <p class="header-eyebrow">Sciences vétérinaires · Morphologie animale</p>
+    <h1>Anatomie<br><em>Comparée</em></h1>
+    <div class="header-divider"></div>
+    <p class="header-subtitle">Étude systématique des structures anatomiques chez les animaux domestiques et de production — ostéologie, myologie, viscères et systèmes comparés.</p>
+    <p style="font-family:'Courier Prime',monospace;font-size:0.7rem;letter-spacing:0.2em;color:rgba(245,240,232,0.35);">Cheval · Bœuf · Mouton · Porc · Chien · Chat</p>
+  </div>
+  <div class="scroll-hint">DÉFILER</div>
+</header>
+
+<!-- ═══════════════════════════════════ NAV ═══════════════════════════════════ -->
+<nav>
+  <ul>
+    <li><a href="#intro">Introduction</a></li>
+    <li><a href="#osteologie">Ostéologie</a></li>
+    <li><a href="#myologie">Myologie</a></li>
+    <li><a href="#digestif">Système digestif</a></li>
+    <li><a href="#cardiovasculaire">Cardio-vasculaire</a></li>
+    <li><a href="#reproducteur">Reproduction</a></li>
+    <li><a href="#comparatif">Tableau comparatif</a></li>
+    <li><a href="#savais-tu">Le savais-tu ?</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════════════════════════ INTRODUCTION ═══════════════════════════════════ -->
+<div id="intro">
+  <section>
+    <div class="section-intro reveal">
+      <span class="section-tag">§ 01 — Préambule</span>
+      <h2>L'anatomie comparée au service<br>de la médecine vétérinaire</h2>
+      <div class="ornament">— ✦ —</div>
+      <p class="lead">L'anatomie comparée étudie les similitudes et les divergences structurelles entre les espèces animales. Chez les animaux domestiques et de production, cette discipline est fondamentale pour comprendre les adaptations évolutives, raisonner le diagnostic clinique et optimiser les interventions chirurgicales.</p>
+    </div>
+
+    <div class="animal-grid">
+      <!-- Cheval -->
+      <div class="animal-card reveal">
+        <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Collage_of_Nine_Dogs.jpg/800px-Collage_of_Nine_Dogs.jpg"
+          onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=60'; this.onerror=null;"
+          alt="Cheval"
+          style="object-position:center;"
+          onload="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Kabyle_horse.jpg/800px-Kabyle_horse.jpg'">
+        <!-- Use a reliable image -->
+        <img class="card-img" src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=600&q=80" alt="Cheval" style="display:none;" id="horse-img">
+        <div class="card-body">
+          <span class="card-tag">Équidés · Herbivore monogastrique</span>
+          <h3>Cheval <em>(Equus caballus)</em></h3>
+          <p>Mammifère périssodactyle dont l'anatomie est marquée par une adaptation remarquable à la locomotion rapide. Son squelette compte environ <mark>205 os</mark>, avec des membres allongés se terminant par un doigt unique (doigt III) encapsulé dans le sabot.</p>
+        </div>
+      </div>
+
+      <!-- Bœuf -->
+      <div class="animal-card reveal">
+        <img class="card-img" src="https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?w=600&q=80" alt="Bovin">
+        <div class="card-body">
+          <span class="card-tag">Bovinés · Ruminant polygastrique</span>
+          <h3>Bœuf <em>(Bos taurus)</em></h3>
+          <p>Artiodactyle dont la caractéristique anatomique majeure est son <mark>estomac à quatre compartiments</mark> (rumen, réseau, feuillet, caillette). Présence de deux doigts fonctionnels (doigts III et IV) formant les onglons. Os frontal portant des cornes chez les deux sexes.</p>
+        </div>
+      </div>
+
+      <!-- Mouton -->
+      <div class="animal-card reveal">
+        <img class="card-img" src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=600&q=80" alt="Mouton">
+        <div class="card-body">
+          <span class="card-tag">Ovinés · Petit ruminant</span>
+          <h3>Mouton <em>(Ovis aries)</em></h3>
+          <p>Petit ruminant au squelette léger (~<mark>180 os</mark>). Formule dentaire lacunaire à la mâchoire supérieure (absence d'incisives). La laine constitue une adaptation tégumentaire unique. Structure tendineuse des membres postérieurs optimisée pour les terrains accidentés.</p>
+        </div>
+      </div>
+
+      <!-- Porc -->
+      <div class="animal-card reveal">
+        <img class="card-img" src="https://images.unsplash.com/photo-1518715308788-3005759c61d4?w=600&q=80" alt="Porc">
+        <div class="card-body">
+          <span class="card-tag">Suidés · Omnivore monogastrique</span>
+          <h3>Porc <em>(Sus scrofa domesticus)</em></h3>
+          <p>L'anatomie du porc présente une grande proximité avec l'anatomie humaine, ce qui en fait un modèle biomédicale de premier choix. Estomac simple, <mark>44 dents</mark> (dentition complète), membres courts avec quatre doigts (II, III, IV, V) dont deux doigts porteurs.</p>
+        </div>
+      </div>
+
+      <!-- Chien -->
+      <div class="animal-card reveal">
+        <img class="card-img" src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80" alt="Chien">
+        <div class="card-body">
+          <span class="card-tag">Canidés · Carnivore digitigrade</span>
+          <h3>Chien <em>(Canis lupus familiaris)</em></h3>
+          <p>Carnivore digitigrade à la posture élancée. Son squelette (~<mark>319 os</mark>) comprend un os du pénis (baculum) chez le mâle. La colonne vertébrale est très flexible. Les membres antérieurs portent 5 doigts (dont le pouce vestigial, ergot) et les postérieurs 4 doigts.</p>
+        </div>
+      </div>
+
+      <!-- Chat -->
+      <div class="animal-card reveal">
+        <img class="card-img" src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&q=80" alt="Chat">
+        <div class="card-body">
+          <span class="card-tag">Félidés · Carnivore digitigrade</span>
+          <h3>Chat <em>(Felis catus)</em></h3>
+          <p>Le squelette du chat (~<mark>230 os</mark>) se distingue par sa clavicule réduite (permettant le passage par des ouvertures étroites), sa colonne extrêmement souple, et ses griffes rétractiles logées dans une gaine cutanée. La cavité orbitaire est particulièrement développée.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═══════════════════════════════════ OSTÉOLOGIE ═══════════════════════════════════ -->
+<div class="band" id="osteologie">
+  <section>
+    <div class="section-intro reveal">
+      <span class="section-tag">§ 02 — Ostéologie</span>
+      <h2>Ostéologie comparée :<br>architecture du squelette</h2>
+      <div class="ornament">— ✦ —</div>
+      <p class="lead">Le squelette constitue la charpente de l'organisme. Sa morphologie reflète fidèlement le mode de vie, le régime alimentaire et la niche écologique de chaque espèce. Les homologies osseuses entre les mammifères domestiques témoignent de leur ascendance commune.</p>
+    </div>
+
+    <div class="callout reveal">
+      <p><strong>Principe d'homologie :</strong> Les membres antérieurs du cheval, du bœuf, du chien et de l'humain dérivent tous du même plan archetypique tétrapode, constitué d'un humérus, d'un radius-ulna, de carpiens, de métacarpiens et de phalanges — malgré des morphologies radicalement différentes.</p>
+    </div>
+
+    <!-- Galerie squelettes -->
+    <div class="skeleton-gallery">
+
+      <div class="skeleton-item reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Horse_anatomy_lateral_view.jpg/640px-Horse_anatomy_lateral_view.jpg"
+          onerror="this.src='https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&q=80'"
+          alt="Squelette cheval">
+        <div class="skeleton-caption">
+          <h4>Cheval — Squelette latéral</h4>
+          <p>Réduction extrême des doigts latéraux. Le canon (MCIII) est particulièrement allongé. L'os naviculaire (os sésamoïde distal) est souvent le siège de pathologies fréquentes.</p>
+        </div>
+      </div>
+
+      <div class="skeleton-item reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Bovine_skeleton.jpg/640px-Bovine_skeleton.jpg"
+          onerror="this.src='https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?w=600&q=80'"
+          alt="Squelette bovin">
+        <div class="skeleton-caption">
+          <h4>Bœuf — Squelette bovin</h4>
+          <p>Présence d'un os intercornual frontal très massif. Vertèbres cervicales courtes et robustes. La ceinture scapulaire est soudée à la colonne thoracique.</p>
+        </div>
+      </div>
+
+      <div class="skeleton-item reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Anatomy_dog_-_Lateral_skeleton.jpg/640px-Anatomy_dog_-_Lateral_skeleton.jpg"
+          onerror="this.src='https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80'"
+          alt="Squelette chien">
+        <div class="skeleton-caption">
+          <h4>Chien — Squelette latéral</h4>
+          <p>Colonne lombaire très souple (6–7 vertèbres). La clavicule est vestigiale ou absente. Le fémur et le tibia forment un angle en stifle bien marqué.</p>
+        </div>
+      </div>
+
+      <div class="skeleton-item reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Felis_catus_skull_06.jpg/640px-Felis_catus_skull_06.jpg"
+          onerror="this.src='https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&q=80'"
+          alt="Crâne de chat">
+        <div class="skeleton-caption">
+          <h4>Chat — Crâne et dentition</h4>
+          <p>Crâne arrondi et brachycéphale naturel. Orbites très larges. Mandibule courte à articulation en charnière simple, idéale pour la saisie et la section de proies.</p>
+        </div>
+      </div>
+
+      <div class="skeleton-item reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Sus_scrofa_skeleton.jpg/640px-Sus_scrofa_skeleton.jpg"
+          onerror="this.src='https://images.unsplash.com/photo-1518715308788-3005759c61d4?w=600&q=80'"
+          alt="Squelette porc">
+        <div class="skeleton-caption">
+          <h4>Porc — Squelette entier</h4>
+          <p>14 à 15 paires de côtes (plus que chez les autres animaux domestiques). Crâne allongé avec museau prémaxillaire allongé en boutoir. Membres courts et trapus.</p>
+        </div>
+      </div>
+
+      <div class="skeleton-item reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Ovis_aries_skeleton.jpg/640px-Ovis_aries_skeleton.jpg"
+          onerror="this.src='https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=600&q=80'"
+          alt="Squelette mouton">
+        <div class="skeleton-caption">
+          <h4>Mouton — Squelette ovin</h4>
+          <p>Os frontaux portant des cornes chez le bélier (souvent absentes chez la brebis). Sternum aplati. Formule dentaire : I 0/3, C 0/1, P 3/3, M 3/3 (total : 32 dents).</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Régions anatomiques -->
+    <div style="margin-top:4rem;" class="reveal">
+      <h3>Régions squelettiques majeures</h3>
+      <div class="ornament" style="text-align:left;margin-left:0;">—</div>
+    </div>
+
+    <div class="system-grid reveal">
+      <div class="system-card">
+        <span class="system-icon">🦴</span>
+        <h4>Colonne vertébrale</h4>
+        <p>Les formules vertébrales diffèrent selon les espèces. Le cheval possède C7-T18-L6-S5-Cy15~18. Le bœuf : C7-T13-L6-S5-Cy18~20. Le chien : C7-T13-L7-S3-Cy20~23. Ces variations reflètent des adaptations posturales et locomotrices distinctes.</p>
+      </div>
+      <div class="system-card">
+        <span class="system-icon">🦷</span>
+        <h4>Formule dentaire</h4>
+        <p>Les herbivores (cheval, ruminants) ont développé des hypsodontie (dents à couronne haute) pour résister à l'abrasion des végétaux siliceux. Les carnivores (chien, chat) possèdent des carnassières tranchantes (prémolaire 4 sup. / molaire 1 inf.).</p>
+      </div>
+      <div class="system-card">
+        <span class="system-icon">🐾</span>
+        <h4>Membres — Évolution digitale</h4>
+        <p>Du pentadactylisme ancestral, les ongulés ont évolué vers une réduction digitale : 4 doigts chez les artiodactyles (bœuf, porc, mouton), 1 doigt chez les périssodactyles (cheval). Les carnivores conservent 4–5 doigts avec griffes.</p>
+      </div>
+      <div class="system-card">
+        <span class="system-icon">💀</span>
+        <h4>Crâne et cavités</h4>
+        <p>Le crâne du cheval est allongé (dolichocéphalie marquée), celui du chat est brachycéphale. Les sinus frontaux des ruminants sont considérablement développés pour soutenir l'implantation des cornes et alléger la masse crânienne.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═══════════════════════════════════ MYOLOGIE ═══════════════════════════════════ -->
+<div id="myologie">
+  <section>
+    <div class="section-intro reveal">
+      <span class="section-tag">§ 03 — Myologie</span>
+      <h2>Myologie : musculature comparée</h2>
+      <div class="ornament">— ✦ —</div>
+      <p class="lead">La musculature de chaque espèce est finement adaptée à son mode locomoteur, son régime et ses comportements. Les différences en masse, en architecture et en composition en fibres musculaires expliquent les performances mécaniques variées.</p>
+    </div>
+
+    <div class="split reveal">
+      <div>
+        <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=800&q=80" alt="Cheval en mouvement">
+      </div>
+      <div>
+        <h3>Cheval : musculature de la locomotion</h3>
+        <p>Le cheval est un exemple d'optimisation musculaire pour la vitesse et l'endurance. Les muscles fessiers (gluteus medius) et semi-tendineux sont hypertrophiés pour propulser la masse corporelle. Le système suspenseur du boulet (tendons fléchisseurs et ligaments sésamoïdiens) permet un emmagasinement élastique d'énergie.</p>
+        <p>La masse musculaire représente <mark>42–45 % du poids vif</mark>. La composition en fibres varie selon la discipline sportive : prédominance de fibres rapides IIX chez les pursang, de fibres lentes I chez les chevaux d'endurance.</p>
+        <div class="callout" style="margin-top:1.5rem;">
+          <p><strong>Curiosité anatomique :</strong> Le muscle long fléchisseur du carpe (lacertus fibrosus) forme une corde tendineuse reliant le biceps brachial à l'extenseur commun des doigts, permettant une extension passive du carpe sans contraction musculaire active — adaptation majeure à la station debout prolongée.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="split reverse reveal">
+      <div>
+        <img src="https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?w=800&q=80" alt="Bovin musculature">
+      </div>
+      <div>
+        <h3>Bovin : musculature lourde de travail</h3>
+        <p>La musculature bovine se caractérise par des masses musculaires volumineuses dans les régions de la croupe (glutéaux) et de la cuisse (biceps femoris, semimembranosus), responsables de la qualité bouchère. Le muscle long dorsal (longissimus dorsi) est particulièrement valorisé en boucherie.</p>
+        <p>Des races comme le Blanc-Bleu belge expriment une <mark>double culotte</mark> — hypermusculature due à une mutation du gène de la myostatine (GDF8) qui lève l'inhibition naturelle de la croissance musculaire.</p>
+      </div>
+    </div>
+
+    <div class="system-grid reveal">
+      <div class="system-card">
+        <span class="system-icon">🐕</span>
+        <h4>Chien — Flexibilité rachidienne</h4>
+        <p>Les muscles épaxiaux (iliocostal, longissimus) permettent une flexion-extension dorsoventrale importante de la colonne lombaire, augmentant considérablement la longueur de foulée lors du galop. Ce mécanisme est aussi présent chez le guépard.</p>
+      </div>
+      <div class="system-card">
+        <span class="system-icon">🐈</span>
+        <h4>Chat — Muscles rétracteurs des griffes</h4>
+        <p>Les muscles fléchisseurs profonds des doigts sont associés à des ligaments élastiques qui maintiennent les griffes en position rétractée au repos. La contraction volontaire du fléchisseur profond étend les phalanges distales et sort les griffes.</p>
+      </div>
+      <div class="system-card">
+        <span class="system-icon">🐖</span>
+        <h4>Porc — Musculature cervicale</h4>
+        <p>Le porc dispose d'une musculature cervicale puissante (sterno-cléido-mastoïdien, trapèze cervical) adaptée au fouissage. Le groin, richement innervé et vascularisé, est soutenu par le muscle rostral et sa structure fibro-cartilagineuse unique.</p>
+      </div>
+      <div class="system-card">
+        <span class="system-icon">🐑</span>
+        <h4>Mouton — Muscle masseter ruminant</h4>
+        <p>Comme tous les ruminants, le mouton possède un muscle masseter très développé pour les mouvements de broyage latéral de la rumination. L'articulation temporo-mandibulaire permet des mouvements dans les trois plans de l'espace.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═══════════════════════════════════ SYSTÈME DIGESTIF ═══════════════════════════════════ -->
+<div class="band-dark" id="digestif">
+  <section>
+    <div class="section-intro reveal">
+      <span class="section-tag">§ 04 — Splanchnologie</span>
+      <h2>Système digestif comparé</h2>
+      <div class="ornament">— ✦ —</div>
+      <p class="lead">L'anatomie du tube digestif reflète le régime alimentaire. La divergence la plus spectaculaire oppose les monogastriques (chien, porc, cheval) aux polygastriques ruminants (bœuf, mouton, chèvre).</p>
+    </div>
+
+    <div class="system-grid reveal">
+      <div class="system-card" style="background:rgba(245,240,232,0.07); border-color:#c9972a;">
+        <span class="system-icon">🌿</span>
+        <h4>Ruminants : l'estomac à 4 compartiments</h4>
+        <p><strong>Rumen (panse) :</strong> grande chambre de fermentation (~150 L chez la vache), siège de la digestion microbienne des fibres cellulosiques.<br>
+        <strong>Réseau (bonnet) :</strong> filtre les ingesta grossiers, déclenche la régurgitation pour la rumination.<br>
+        <strong>Feuillet (psalterium) :</strong> feuillets laminaires absorbant l'eau et les acides gras volatils.<br>
+        <strong>Caillette (abomasum) :</strong> seul compartiment glandulaire, analogue à l'estomac des monogastriques.</p>
+      </div>
+
+      <div class="system-card" style="background:rgba(245,240,232,0.07); border-color:#8b3a1a;">
+        <span class="system-icon">🐴</span>
+        <h4>Cheval : le cæcum fermentaire</h4>
+        <p>Le cheval est un herbivore monogastrique à fermentation postgastrique. Son <mark>cæcum (30 L)</mark> et son côlon dorsal droit (60–70 L) hébergent une flore microbienne dense qui fermente les fibres non digérées par les enzymes gastriques. La disposition en forme de « U » du côlon et ses flexures prédisposent aux coliques de déplacement.</p>
+      </div>
+
+      <div class="system-card" style="background:rgba(245,240,232,0.07); border-color:#4a5e3a;">
+        <span class="system-icon">🥩</span>
+        <h4>Carnivores (chien, chat) : intestin court</h4>
+        <p>Le tube digestif des carnivores est relativement court (ratio intestin/longueur corporelle ≈ 6:1 chez le chien vs 20:1 chez les herbivores). L'estomac simple et très distensible peut contenir de grandes quantités d'aliments ingérés en un seul repas. Le chien peut digérer 90 % des protéines animales consommées.</p>
+      </div>
+
+      <div class="system-card" style="background:rgba(245,240,232,0.07); border-color:#5c3d1e;">
+        <span class="system-icon">🐷</span>
+        <h4>Porc : omnivore à estomac simple</h4>
+        <p>L'estomac du porc est simple mais présente une zone diverticulaire (diverticulum ventriculi) unique en son genre. L'intestin grêle mesure 15 à 20 m et le gros intestin présente des haustra (bosselures) caractéristiques liées aux bandelettes musculaires (tænia coli).</p>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem;" class="reveal">
+      <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=1200&q=80" alt="Ferme" style="width:100%;height:280px;object-fit:cover;filter:sepia(30%) brightness(0.7);border:1px solid rgba(201,151,42,0.3);">
+    </div>
+  </section>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═══════════════════════════════════ SYSTÈME CARDIO-VASCULAIRE ═══════════════════════════════════ -->
+<div id="cardiovasculaire">
+  <section>
+    <div class="section-intro reveal">
+      <span class="section-tag">§ 05 — Angiologie</span>
+      <h2>Système cardio-vasculaire</h2>
+      <div class="ornament">— ✦ —</div>
+      <p class="lead">Le cœur et les vaisseaux présentent un plan d'organisation commun chez tous les mammifères. Les différences portent sur la taille relative du cœur, la fréquence cardiaque et les adaptations aux contraintes physiologiques propres à chaque espèce.</p>
+    </div>
+
+    <div class="table-wrap reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Espèce</th>
+            <th>Poids cœur / Poids corps</th>
+            <th>Fréquence cardiaque (repos)</th>
+            <th>Volume systolique</th>
+            <th>Particularités</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cheval (adulte)</td>
+            <td>0,7 – 1,0 %</td>
+            <td>28 – 44 bpm</td>
+            <td>700 – 900 mL</td>
+            <td>Rate contractile comme réservoir d'érythrocytes (débit ×3 à l'effort)</td>
+          </tr>
+          <tr>
+            <td>Bœuf</td>
+            <td>0,4 – 0,5 %</td>
+            <td>40 – 70 bpm</td>
+            <td>500 – 700 mL</td>
+            <td>Fréquence cardiaque plus élevée que le cheval à corpulence comparable</td>
+          </tr>
+          <tr>
+            <td>Mouton</td>
+            <td>0,5 %</td>
+            <td>60 – 80 bpm</td>
+            <td>60 – 90 mL</td>
+            <td>Réseau de rete mirabile (contre-courant thermique) dans certaines races</td>
+          </tr>
+          <tr>
+            <td>Porc</td>
+            <td>0,25 – 0,35 %</td>
+            <td>60 – 90 bpm</td>
+            <td>100 – 150 mL</td>
+            <td>Coronaires sans anastomoses → vulnérabilité à l'infarctus (modèle bioméd.)</td>
+          </tr>
+          <tr>
+            <td>Chien</td>
+            <td>0,6 – 0,8 %</td>
+            <td>60 – 140 bpm</td>
+            <td>20 – 30 mL</td>
+            <td>Grande variabilité raciale ; arythmie sinusale respiratoire normale</td>
+          </tr>
+          <tr>
+            <td>Chat</td>
+            <td>0,5 %</td>
+            <td>120 – 240 bpm</td>
+            <td>3 – 5 mL</td>
+            <td>Cardiomyopathie hypertrophique (CMH) très fréquente, notamment chez le Maine Coon</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="system-grid" style="margin-top:3rem;">
+      <div class="system-card reveal">
+        <span class="system-icon">❤️</span>
+        <h4>Morphologie cardiaque commune</h4>
+        <p>Le cœur des mammifères est un organe à 4 cavités (2 oreillettes, 2 ventricules), séparé en circulation pulmonaire (droite) et systémique (gauche). La paroi du ventricule gauche est 3 à 4× plus épaisse que celle du ventricule droit.</p>
+      </div>
+      <div class="system-card reveal">
+        <span class="system-icon">🩸</span>
+        <h4>Érythrocytes — Diversité morphologique</h4>
+        <p>Les globules rouges varient en taille : <mark>~5 µm chez le chèvre</mark>, ~6 µm chez le chien, ~5,5 µm chez le chat. Le cheval a des hématies anucléées discoïdes avec une tendance à la formation de rouleaux. Le porc présente une durée de vie érythrocytaire courte (≈70 jours).</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═══════════════════════════════════ REPRODUCTION ═══════════════════════════════════ -->
+<div class="band" id="reproducteur">
+  <section>
+    <div class="section-intro reveal">
+      <span class="section-tag">§ 06 — Génitologie</span>
+      <h2>Anatomie du système reproducteur</h2>
+      <div class="ornament">— ✦ —</div>
+      <p class="lead">Les appareils génitaux mâles et femelles présentent un plan commun mais se distinguent par leurs dimensions, leurs positions anatomiques, et des particularités fonctionnelles majeures liées aux cycles de reproduction de chaque espèce.</p>
+    </div>
+
+    <div class="system-grid reveal">
+      <div class="system-card">
+        <span class="system-icon">🐄</span>
+        <h4>Utérus — Diversité anatomique</h4>
+        <p><strong>Utérus bicorne :</strong> present chez le porc (cornes très longues, 1–1,5 m), la chienne, la chatte, la jument et la vache. Les cornes utérines sont le siège de la gestation.<br><strong>Caroncules utérines :</strong> structures vasculaires spécifiques aux ruminants, point d'ancrage des cotylédons placentaires pour former les placentomes.</p>
+      </div>
+      <div class="system-card">
+        <span class="system-icon">🧬</span>
+        <h4>Placenta — Types comparés</h4>
+        <p><strong>Zonaire :</strong> chien et chat (zone équatoriale du placenta).<br>
+        <strong>Cotylédonaire :</strong> ruminants (placentomes multiples).<br>
+        <strong>Diffus :</strong> jument et truie (vascularisation sur toute la surface).<br>
+        Ces types déterminent le mode de transfert des immunoglobulines maternelles et le degré de transfert placentaire des substances médicamenteuses.</p>
+      </div>
+      <div class="system-card">
+        <span class="system-icon">⏱️</span>
+        <h4>Cycles et durées de gestation</h4>
+        <p>Jument : 340 jours (cycle 21j, polyœstrus saisonnier).<br>
+        Vache : 280 jours (cycle 21j, polyœstrus).<br>
+        Brebis : 147 jours (cycle 17j, polyœstrus saisonnier court-jour).<br>
+        Truie : 114 jours (cycle 21j, polyœstrus).<br>
+        Chienne : 63 jours (diœstrus annuel).<br>
+        Chatte : 63–65 jours (polyœstrus saisonnier, ovulation provoquée).</p>
+      </div>
+      <div class="system-card">
+        <span class="system-icon">🔬</span>
+        <h4>Testicule — Position scrotale</h4>
+        <p>La position scrotale des testicules est fondamentale pour la spermatogenèse (2–4 °C en dessous de la température corporelle). Chez le porc, les testicules sont dirigés vers l'arrière (orientation caudale). Le cheval présente une large bourse avec un gubernaculum puissant lors de la descente testiculaire néonatale.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═══════════════════════════════════ TABLEAU COMPARATIF ═══════════════════════════════════ -->
+<div id="comparatif">
+  <section>
+    <div class="section-intro reveal">
+      <span class="section-tag">§ 07 — Synthèse</span>
+      <h2>Tableau comparatif général</h2>
+      <div class="ornament">— ✦ —</div>
+      <p class="lead">Vue d'ensemble des caractéristiques anatomiques et physiologiques majeures des principales espèces domestiques et de production.</p>
+    </div>
+
+    <div class="table-wrap reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Critère</th>
+            <th>Cheval</th>
+            <th>Bœuf</th>
+            <th>Mouton</th>
+            <th>Porc</th>
+            <th>Chien</th>
+            <th>Chat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Nombre d'os (approx.)</td><td>205</td><td>207</td><td>180</td><td>~216</td><td>319</td><td>230</td></tr>
+          <tr><td>Type de tube digestif</td><td>Monogastrique postfermentaire</td><td>Polygastrique (4 poches)</td><td>Polygastrique (4 poches)</td><td>Monogastrique simple</td><td>Monogastrique carnivore</td><td>Monogastrique carnivore</td></tr>
+          <tr><td>Nombre de doigts</td><td>1 (III)</td><td>4 (II,III,IV,V)</td><td>4 (II,III,IV,V)</td><td>4 (II–V)</td><td>5/4</td><td>5/4</td></tr>
+          <tr><td>Température corporelle</td><td>37,5–38,5 °C</td><td>38–39 °C</td><td>38,5–39,5 °C</td><td>38,5–40 °C</td><td>38–39 °C</td><td>38–39,5 °C</td></tr>
+          <tr><td>Type placentaire</td><td>Diffus</td><td>Cotylédonaire</td><td>Cotylédonaire</td><td>Diffus</td><td>Zonaire</td><td>Zonaire</td></tr>
+          <tr><td>Mode de marche</td><td>Unguligrade</td><td>Unguligrade</td><td>Unguligrade</td><td>Unguligrade</td><td>Digitigrade</td><td>Digitigrade</td></tr>
+          <tr><td>Durée gestation</td><td>~340 j</td><td>~280 j</td><td>~147 j</td><td>~114 j</td><td>~63 j</td><td>~63 j</td></tr>
+          <tr><td>Formule dentaire adulte</td><td>I3/3 C1/1 P3-4/3 M3/3</td><td>I0/3 C0/1 P3/3 M3/3</td><td>I0/3 C0/1 P3/3 M3/3</td><td>I3/3 C1/1 P4/4 M3/3</td><td>I3/3 C1/1 P4/4 M2/3</td><td>I3/3 C1/1 P3/2 M1/1</td></tr>
+          <tr><td>Vesicule biliaire</td><td>Absente</td><td>Présente</td><td>Présente</td><td>Présente</td><td>Présente</td><td>Présente</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout reveal" style="margin-top:3rem;">
+      <p><strong>Note clinique :</strong> L'absence de vésicule biliaire chez le cheval explique son incapacité à tolérer des repas riches en lipides administrés en bolus. La bile est excrétée en continu directement dans le duodénum, imposant une alimentation fractionnée.</p>
+    </div>
+
+    <!-- Final image -->
+    <div class="reveal" style="margin-top:3rem;text-align:center;">
+      <img src="https://images.unsplash.com/photo-1550358864-518f202c02ba?w=1200&q=80" alt="Animaux de ferme" style="width:100%;max-height:360px;object-fit:cover;filter:sepia(15%);border:1px solid var(--bone);">
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════ LE SAVAIS-TU ═══════════════════════════════════ -->
+<div class="sep"></div>
+<div id="savais-tu">
+  <section>
+    <div class="section-intro reveal">
+      <span class="section-tag">§ 08 — Anecdotes & curiosités</span>
+      <h2>Le savais-tu ?</h2>
+      <div class="ornament">— ✦ —</div>
+      <p class="lead">L'anatomie comparée réserve de nombreuses surprises. Voici quelques faits remarquables qui illustrent la diversité et l'ingéniosité des solutions évolutives chez nos animaux domestiques.</p>
+    </div>
+
+    <div class="fun-grid">
+
+      <div class="fun-card reveal">
+        <span class="fun-emoji">🐴</span>
+        <span class="fun-species">Cheval</span>
+        <h4>Le cheval ne peut pas vomir</h4>
+        <p>Le cardia (sphincter entre l'œsophage et l'estomac) est tellement puissant et l'angle d'insertion si prononcé que le cheval est incapable de régurgiter. C'est pourquoi les coliques peuvent être mortelles : les gaz et ingesta ne peuvent être expulsés que vers l'avant du tube digestif.</p>
+      </div>
+
+      <div class="fun-card reveal">
+        <span class="fun-emoji">🐄</span>
+        <span class="fun-species">Bovin</span>
+        <h4>La vache rumine jusqu'à 8 heures par jour</h4>
+        <p>Une vache laitière régurgite et remâche ses aliments entre 40 000 et 70 000 fois par jour. Le rumen contient plus de 10 milliards de bactéries par millilitre, formant un écosystème microbien extraordinaire capable de digérer la cellulose que les enzymes des mammifères ne peuvent pas dégrader.</p>
+      </div>
+
+      <div class="fun-card reveal">
+        <span class="fun-emoji">🐈</span>
+        <span class="fun-species">Chat</span>
+        <h4>Le chat ronronne à une fréquence thérapeutique</h4>
+        <p>Le ronronnement du chat se produit à des fréquences de 25 à 50 Hz — précisément la plage qui favorise la cicatrisation osseuse et tissulaire selon des études orthopédiques. Des recherches suggèrent que les chats ronronnent aussi pour s'auto-soigner lors de douleurs ou de stress.</p>
+      </div>
+
+      <div class="fun-card reveal">
+        <span class="fun-emoji">🐕</span>
+        <span class="fun-species">Chien</span>
+        <h4>Le nez du chien : 300 millions de récepteurs olfactifs</h4>
+        <p>Contre seulement 5 millions chez l'humain. La muqueuse olfactive du chien occupe une surface de 130 cm² (contre 3 cm² chez l'humain) et la portion cérébrale dédiée à l'olfaction est 40× plus développée proportionnellement. Un chien peut détecter une odeur diluée à 1 partie par trillion.</p>
+      </div>
+
+      <div class="fun-card reveal">
+        <span class="fun-emoji">🐖</span>
+        <span class="fun-species">Porc</span>
+        <h4>Le cœur du porc est utilisé en chirurgie humaine</h4>
+        <p>Les valves cardiaques porcines sont biologiquement très proches des valves humaines. Les xénogreffes porcines (hétérogreffes) sont utilisées depuis les années 1970 pour remplacer les valves aortiques et mitrales chez l'humain. En 2022, la première transplantation cardiaque porcine génétiquement modifié a été réalisée.</p>
+      </div>
+
+      <div class="fun-card reveal">
+        <span class="fun-emoji">🐑</span>
+        <span class="fun-species">Mouton</span>
+        <h4>Les pupilles rectangulaires des moutons</h4>
+        <p>Les moutons (et les chèvres) ont des pupilles horizontales rectangulaires qui leur offrent un champ visuel panoramique de 320°, permettant de détecter les prédateurs sans bouger la tête. Remarquable : leurs yeux peuvent pivoter dans l'orbite pour maintenir la pupille horizontale, même quand la tête baisse pour brouter.</p>
+      </div>
+
+      <div class="fun-card reveal">
+        <span class="fun-emoji">🐴</span>
+        <span class="fun-species">Cheval</span>
+        <h4>Le cheval peut dormir debout... mais pas profondément</h4>
+        <p>Grâce à un système d'enclenchement passif des membres (apparatus suspensorius), le cheval verrouille ses articulations et se repose debout sans effort musculaire. Mais le sommeil paradoxal (REM), indispensable à la récupération neurologique, ne peut se produire que couché — le cheval doit donc s'allonger au moins 30–60 min par jour.</p>
+      </div>
+
+      <div class="fun-card reveal">
+        <span class="fun-emoji">🐄</span>
+        <span class="fun-species">Bovin</span>
+        <h4>Les vaches n'ont pas de dents supérieures devant</h4>
+        <p>Les bovins et tous les ruminants sont dépourvus d'incisives à la mâchoire supérieure. À la place, un bourrelet gingival calleux (plaque dentaire) s'oppose aux incisives inférieures pour saisir et arracher l'herbe. Cela permet un arrachage efficace sans couper ras, laissant les prairies se régénérer.</p>
+      </div>
+
+      <div class="fun-card reveal">
+        <span class="fun-emoji">🐈</span>
+        <span class="fun-species">Chat</span>
+        <h4>Le chat ne perçoit pas la saveur sucrée</h4>
+        <p>Les chats sont les seuls mammifères identifiés comme incapables de détecter le goût sucré. Le gène codant pour une sous-unité du récepteur du sucre (Tas1r2) est non fonctionnel chez les félidés — une mutation probablement apparue il y a 10 000 ans et maintenue car inutile pour des carnivores stricts.</p>
+      </div>
+
+      <div class="fun-card reveal">
+        <span class="fun-emoji">🐕</span>
+        <span class="fun-species">Chien</span>
+        <h4>Les chiens ont un 6e sens thermique dans le nez</h4>
+        <p>La truffe froide et humide des chiens héberge des récepteurs thermiques sensibles aux rayonnements infrarouge de très faible intensité. Des études récentes (Kjonerod et al., 2020) montrent que les chiens peuvent détecter des sources de chaleur animale à distance, même les yeux bandés — un vestige de chasse aux proies endothermes.</p>
+      </div>
+
+      <div class="fun-card reveal">
+        <span class="fun-emoji">🐖</span>
+        <span class="fun-species">Porc</span>
+        <h4>Le porc est l'un des animaux les plus intelligents</h4>
+        <p>Des études neuroanatomiques révèlent que le cortex préfrontal du porc est proportionnellement plus développé que chez beaucoup d'autres animaux d'élevage. Des porcs ont été entraînés à jouer à des jeux vidéo avec un joystick, démontrant une mémoire spatiale, une capacité d'apprentissage et même des comportements altruistes.</p>
+      </div>
+
+      <div class="fun-card reveal">
+        <span class="fun-emoji">🐑</span>
+        <span class="fun-species">Mouton</span>
+        <h4>Les moutons reconnaissent jusqu'à 50 visages</h4>
+        <p>Des chercheurs de Cambridge ont démontré que les moutons peuvent mémoriser et reconnaître jusqu'à 50 visages d'autres moutons pendant plus de 2 ans. Leur cortex temporal possède des zones spécialisées dans la reconnaissance des visages similaires à celles de l'humain, révélant une vie sociale bien plus complexe qu'on ne le supposait.</p>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
+<footer>
+  <p>Anatomie Comparée des Animaux Domestiques & de Production</p>
+  <p style="margin-top:0.5rem;font-size:0.65rem;">
+    <span>Ostéologie</span> · <span>Myologie</span> · <span>Splanchnologie</span> · <span>Angiologie</span> · <span>Génitologie</span> · <span>Le savais-tu ?</span>
+  </p>
+  <p style="margin-top:0.8rem;opacity:0.4;">Sciences vétérinaires — Document à visée pédagogique</p>
+</footer>
+
+<script>
+  // Intersection Observer for scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Fix broken images with fallbacks
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', function() {
+      const fallbacks = {
+        'cheval': 'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=600&q=80',
+        'bovin': 'https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?w=600&q=80',
+        'mouton': 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=600&q=80',
+        'porc': 'https://images.unsplash.com/photo-1518715308788-3005759c61d4?w=600&q=80',
+        'chien': 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80',
+        'chat': 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&q=80',
+      };
+      const alt = this.alt.toLowerCase();
+      for (const [key, url] of Object.entries(fallbacks)) {
+        if (alt.includes(key)) { this.src = url; break; }
+      }
+    });
+  });
+</script>
+</body>
+</html>
